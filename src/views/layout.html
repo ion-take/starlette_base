@@ -1,0 +1,60 @@
+
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{page_title}}</title>
+
+  
+  <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', path='css/tabler.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', path='css/fontawesome.min.css') }}">
+  
+  {% block costum_cs %}{% endblock costum_cs %}
+
+</head>
+<body>
+  <div>
+    <dev class="page">
+
+      {% block header %}
+      {% endblock header %}
+
+
+      <div class="page-wrapper border-sm" >
+      {% block content %}{% endblock content %}
+      </div>
+
+    </dev>
+
+  
+    {% block footer %}
+    <div class="footer bg-dark text-white">
+      <div class="container text-white">
+        <footer class="py-3 my-1">
+          <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-white fs-md">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-white fs-md">Features</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-white fs-md">Pricing</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-white fs-md">FAQs</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-white fs-md">About</a></li>
+          </ul>
+          <p class="text-center text-white fs-md">© 2024 Company, Inc</p>
+        </footer>
+      </div>
+    </div>
+    {% endblock footer %}
+    
+  </dev>
+ 
+  <script src="{{ url_for('static', path='js/script.js')}}"></script>
+  <script type="text/javascript" src="{{ url_for('static', path='js/vendor/jquery.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', path='js/vendor/js.cookie.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', path='js/vendor/tabler.min.js') }}"></script>
+
+  {% block costum_js %}
+  {% endblock costum_js %}
+  
+  </body>
+</html>
