@@ -14,7 +14,7 @@ RoutingTable: List[Union[Route, Mount]] = [
     Mount('/static', app=Static, name='static'),
     Mount('/auth', routes=auth_routes, name='auth'),
     Mount('/storage', routes=storage_routes, name='storage'),
-    Mount('/', routes=landin_routes, name='landin'),
+    Mount('/dash', routes=landin_routes, name='landin'),
 ]
 
 

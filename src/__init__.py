@@ -5,7 +5,7 @@ from src.exception.http_exceptions import exception_handlers
 from src.config.middleware_config import AppMiddleWare, login_manager
 from src.database.storage import configure_storage
 from src.router import RoutingTable
-
+from src.admin import app as admin_app
 
 def create_app():
     """ 
@@ -19,5 +19,6 @@ def create_app():
         on_startup=[configure_storage],
     )
 
+    admin_app.create_admin(app)
     app.state.login_manager = login_manager
     return app
