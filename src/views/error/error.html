@@ -1,0 +1,36 @@
+
+
+{% extends "layout.html" %}
+
+
+{% block content %}
+    <div class="empty">
+        {% if exc.status_code %}
+            <div class="empty-header">{{ exc.status_code }}</div>
+            <p class="empty-title">"Oops… You just found an error page"</p>
+            <p class="empty-subtitle text-muted">{{ exc.detail }}</p>
+            <div class="empty-action">
+                {%- if home_link.is_accessable(request) and home_link.is_active(request) -%}
+                <a href="{{ home_link.url(request) }}" class="btn btn-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M5 12l14 0"></path><path d="M5 12l6 6"></path><path d="M5 12l6 -6"></path></svg>
+                    Go back {{ home_link.lable }}
+                </a>
+                {%- endif -%}
+            </div>
+        {% else %}
+            <div class="empty-header">500</div>
+            <p class="empty-title">"Oops… You just found an error page"</p>
+            <p class="empty-subtitle text-muted">unspected Error {{exc}}</p>
+            <div class="empty-action">
+                {%- if home_link.is_accessable(request) and home_link.is_active(request) -%}
+                <a href="{{ home_link.url(request) }}" class="btn btn-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M5 12l14 0"></path><path d="M5 12l6 6"></path><path d="M5 12l6 -6"></path></svg>
+                    Go back {{ home_link.lable }}
+                </a>
+                {%- endif -%}
+            </div>
+        {% endif %}
+
+
+    </div>
+{% endblock %}

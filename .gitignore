@@ -1,0 +1,13 @@
+
+
+#  ignoring cache files 
+*.pyc
+.pytest_cache
+__pycache__
+
+#  env files 
+.env 
+upload
+
+# test database
+*.db

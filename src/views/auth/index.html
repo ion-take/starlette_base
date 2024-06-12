@@ -1,0 +1,62 @@
+
+{% extends "layout.html" %}
+
+{% block header %}{% endblock header %}
+
+{% block content %}
+
+  <div class="container container-tight py-4">
+  <div class="text-center mb-4">
+    
+  </div>
+  <div class="card card-md shadow-sm rounded">
+    <div class="card-body  shadow-sm">
+      <h2 class="h2 text-center mb-4">Login to your account</h2>
+
+      <form class="fs-3" action="{{login_link.url(request)}}" method="post" autocomplete="off" novalidate="">
+        
+        {{ form.csrf_token }}
+      
+        {% if error %}
+          <div class="alert alert-important alert-danger alert-dismissible" role="alert">
+            <div class="d-flex">
+               <i class="{{ error.icon }} pe-3" style="font-size: 20px"></i> 
+              <div>
+                {{ error.msg }}
+              </div>
+            </div>
+            <a class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="close"></a>
+          </div>
+        {% endif %}
+
+        <div class="mb-3">
+          {{form.email.label(class="form-label")}}
+          {{form.email(class="form-control", placeholder='your email')}}
+        </div>
+        <div class="mb-2">
+          <div class="d-flex justify-content-between">
+            {{form.password.label(class="form-label")}}
+          </div>
+         
+          <div class="input-group input-group-flat">
+            {{form.password(class="form-control", placeholder='your password')}}
+          </div>
+        </div>
+        <div class="mb-2">
+          <div class="d-flex">
+            {{form.remember(class="form-check-input ", style="cursor: pointer")}}
+            {{form.remember.label(class="form-check-label mx-3", style="cursor: pointer")}}
+          </div>
+        </div>
+
+        <div class="form-footer  ">
+          {{form.submit(class="btn btn-primary w-100")}}
+        </div>
+      </form>
+     
+    </div>
+    
+  </div>
+{% endblock content %}
+
+{% block footer %}{% endblock footer %}
