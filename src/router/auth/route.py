@@ -5,6 +5,7 @@ from http import HTTPMethod
 from starlette.routing import Route
 from starlette.requests import Request 
 from starlette.responses import Response
+from starlette_login.decorator import login_required
 from starlette_wtf import csrf_protect
 
 from src.form.forms import LoginForm
@@ -24,7 +25,7 @@ async def login(request: Request)-> Response:
 
 
 
-
+@login_required
 async def logout(request: Request)-> Response:
     response = await logout_helper(request)
     return response

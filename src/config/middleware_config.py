@@ -19,6 +19,7 @@ from starlette_login.login_manager import LoginManager
 from starlette_login.middleware import AuthenticationMiddleware
 from starlette_wtf import CSRFProtectMiddleware
 
+
 from src.database.connection import async_session
 from src.database.user_loader import user_loader
 from src.settings import Env    
@@ -26,8 +27,7 @@ from src.flash import messages
 
 
 
-
-login_manager = LoginManager(redirect_to='/auth/', secret_key=str(Env.LOGIN_SECRET_KEY))
+login_manager = LoginManager(redirect_to='/auth/login', secret_key=str(Env.LOGIN_SECRET_KEY))
 login_manager.set_user_loader(user_loader)
 
 
@@ -49,8 +49,8 @@ class UrlAnalizerMiddleware(BaseHTTPMiddleware):
 
     async def dispatch(self, request: Request, call_next: RequestResponseEndpoint) -> Response:
         """ here goes the logics """
+        
         return await call_next(request)
-
 
 
 
@@ -71,3 +71,5 @@ AppMiddleWare = [
 ]
 
 
+# add translatetor middelwares 
+AppMiddleWareI18n = AppMiddleWare.extend([])

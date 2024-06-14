@@ -16,6 +16,6 @@ async def landin(request: Request)-> Response:
 
 
 routes = [
-    Route('/landin', endpoint=landin, name='landin'),
+    Route('/', endpoint=landin, name='landin'),
     
 ]

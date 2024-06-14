@@ -50,12 +50,28 @@ class User(Base):
     _id: Mapped[int] = mapped_column(Integer, primary_key=True)
     name: Mapped[str] = mapped_column(String(20), nullable=False, unique=True)
     
+    access: Mapped['Access'] = relationship(back_populates='user')
+
     def repr(self)->str:
         return self.name 
     
-    async def run_query(self, session: AsyncSession, query: Select)-> Any:
-        intent = await session.execute(query)
-        return intent
 
 
 
+class Access(Base):
+    __tablename__ = 'access'
+
+    _id: Mapped[int] = mapped_column(Integer, primary_key=True)
+
+    is_active: Mapped[bool] = mapped_column(Boolean, default=False)
+    is_block: Mapped[bool] = mapped_column(Boolean, default=False)
+
+    user_id: Mapped[int] = mapped_column(Integer, ForeignKey('user._id'), nullable=False)
+    user: Mapped['User'] = relationship(back_populates='access')
+
+    def repr(self):
+        return f"""
+        user_id: {self.user_id}
+        is_active: {self.is_active}
+        is_block: {self.is_block}
+        """

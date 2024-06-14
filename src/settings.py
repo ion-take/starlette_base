@@ -14,6 +14,7 @@ from starlette.staticfiles import StaticFiles
 from starlette.datastructures import Secret, CommaSeparatedStrings
 from starlette.status import HTTP_200_OK
 
+
 from src.config import navegation_config, template_config
 
 # setting the configurations variables 
@@ -86,8 +87,9 @@ def create_template()-> None:
     """ 
     genarating a jinja2 template object
     """
-    template: Jinja2Templates = Jinja2Templates(directory=get_resouces_location('src', 'views'))
-
+    template: Jinja2Templates = Jinja2Templates(directory=get_resouces_location('src', 'views'), extensions=["jinja2.ext.i18n"])
+    # template_config.set_template_translation(template, get_resouces_location('src', 'locals'))
+    
     template_config.set_template_filters(template)
     template_config.set_template_globals(template)
     navegation_config.set_template_navegation_links(template)

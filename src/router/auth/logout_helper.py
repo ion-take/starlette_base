@@ -19,7 +19,6 @@ from src.database.model import User
 #  logout helpers 
 async def logout_helper(request:Request)->Response:
 
-
     await logout_user(request)
     url = request.url_for('landin:landin')
     request.session.clear()

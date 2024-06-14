@@ -67,5 +67,5 @@ class AdminLink(BaseLink):
 def set_template_navegation_links(template: Jinja2Templates)-> None:
 
     template.env.globals["home_link"] = HomeLink()
-    # template.env.globals["login_link"] = LoginLink()
+    template.env.globals["login_link"] = LoginLink()
 
