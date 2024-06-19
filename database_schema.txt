@@ -1,0 +1,108 @@
+
+
+page usage description 
+
+user can login to idengfie who makes an action 
+can save product by category
+every product have an unique qrcode
+    have selling info and a control 
+    have a location assing to it
+
+can make Order with the availabel products 
+    notifie if a product is not available
+    cant make ortder if a item is count is 0
+
+can masrk orders as pending, prepared, fullfild
+
+
+user 
+    have to login to dintify his actions
+    to keep track of what the user does
+    can add delete update  products 
+    can add delete update orders
+
+Product
+    are group by category 
+    must have a unique qrcode
+    must have a product control
+    have a offerd option
+    have image
+
+Order
+    create out of available products
+    have a state options [ pending | praperd | fullfiled ]
+    have a pay later option [ ] : Table
+    is link to a tikect  Table
+
+Ticket 
+    identified by which user created
+    have orders make for the same client
+
+
+
+
+
+
+
+
+
+
+
+
+
+user{
+    name
+    last_name
+    phone
+    access: Table
+    email
+    password  
+}
+
+
+
+provider{
+    name
+    phone
+    direction
+    persona
+}
+
+category{
+    name
+    description
+    product: link
+}
+
+product{
+    name
+    price
+    qrcode
+    type
+    varient: self-related
+    description
+    control: table 
+    offerd: table 
+    category: Table 
+    state: table
+}
+
+product_stuck{
+    cuantity
+}
+
+offered{
+    product: link 
+    state: bool
+    price 
+    time
+}
+
+control{
+    provider: link 
+    product 
+    recived_at
+    expires_at
+    cuantity
+    price
+}
